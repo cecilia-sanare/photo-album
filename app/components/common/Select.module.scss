@@ -1,0 +1,22 @@
+.select {
+    border-radius: 3px;
+    border: none;
+    padding: 0 10px;
+    min-height: 40px;
+    outline: none;
+    color: black;
+    background: rgba(255, 255, 255, 0.8);
+
+    transition: 0.15s ease-in-out;
+    transition-property: background-color;
+
+    &::placeholder {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        background: rgba(255, 255, 255, 0.9);
+    }
+}

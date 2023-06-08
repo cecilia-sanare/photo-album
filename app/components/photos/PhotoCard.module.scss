@@ -1,0 +1,37 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 150px;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.25);
+    color: white;
+    cursor: pointer;
+
+    transition: 0.15s ease-in-out;
+    transition-property: background-color;
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    > .thumbnail {
+        border-radius: inherit;
+    }
+
+    > .id {
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        min-height: 30px;
+        line-height: 1;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 3px;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+    }
+}

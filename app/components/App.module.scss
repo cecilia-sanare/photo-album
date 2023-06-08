@@ -1,0 +1,15 @@
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+.photos {
+    box-sizing: border-box;
+    gap: 10px;
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

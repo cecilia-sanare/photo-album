@@ -1,0 +1,21 @@
+.backdrop {
+    background: rgba(0, 0, 0, 0.25);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: 1;
+    
+    transition: 0.15s ease-in-out;
+    transition-property: opacity;
+    
+    &:not(.opened) {
+        pointer-events: none;
+    }
+
+    &.opened {
+        opacity: 1;
+    }
+}

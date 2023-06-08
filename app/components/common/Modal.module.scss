@@ -1,0 +1,30 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 20px;
+    padding: 10px;
+    background: #2f3640;
+    opacity: 0;
+    z-index: 1;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+    max-width: 1000px;
+    margin: 20px auto;
+    box-sizing: border-box;
+    
+    transition: 0.15s ease-in-out;
+    transition-property: opacity;
+
+    &.opened {
+        opacity: 1;
+    }
+
+    &:not(.opened) {
+        pointer-events: none;
+    }
+}

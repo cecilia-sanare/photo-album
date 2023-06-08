@@ -1,0 +1,99 @@
+name: Verify & Build
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  install:
+    name: Install
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Cache Node Modules
+        id: cache-npm
+        uses: actions/cache@v3
+        with:
+          path: node_modules/
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      # Any way to encapsulate all of this with cache-hit?
+      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+        name: Install Packages
+        run: npm ci
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    needs: [install]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+      - name: Cache Node Modules
+        id: cache-npm
+        uses: actions/cache@v3
+        with:
+          path: node_modules/
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Linting
+        run: npm run lint
+
+  coverage:
+    name: Coverage
+    runs-on: ubuntu-latest
+    needs: [install]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+      - name: Cache Node Modules
+        id: cache-npm
+        uses: actions/cache@v3
+        with:
+          path: node_modules/
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Coverage
+        run: npm run test:coverage
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: [install]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache Node Modules
+        id: cache-npm
+        uses: actions/cache@v3
+        with:
+          path: node_modules/
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Cache NextJS
+        id: cache-nextjs
+        uses: actions/cache@v3
+        with:
+          path:  |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          # Generate a new cache whenever packages or source files change.
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          # If source files changed but packages didn't, rebuild from a prior cache.
+          restore-keys: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+      - name: Build
+        run: npm run build
