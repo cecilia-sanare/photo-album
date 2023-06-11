@@ -9,15 +9,24 @@ describe('<Backdrop />', () => {
   });
 
   it('should close when the backdrop is clicked', async () => {
-    const onClose = jest.fn();
-    const component = render(<Backdrop opened onClose={onClose} />);
-
-    expect(onClose).toHaveBeenCalledTimes(0);
+    const component = render(<Backdrop opened />);
 
     await fireEvent.click(component.getByTestId('backdrop'));
 
     expect(component.getByTestId('backdrop')).not.toHaveClass('opened');
-    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  describe('prop(onClose)', () => {
+    it('should fire off onClose when the backdrop is closed', async () => {
+      const onClose = jest.fn();
+      const component = render(<Backdrop opened onClose={onClose} />);
+
+      expect(onClose).toHaveBeenCalledTimes(0);
+
+      await fireEvent.click(component.getByTestId('backdrop'));
+
+      expect(onClose).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('prop(opened)', () => {

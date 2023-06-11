@@ -19,20 +19,21 @@ export function Select({
   placeholder,
   onChange
 }: SelectProps) {
-  const [selectedValue, setSelectedValue] = useCachedState(() => value || null, [value]);
+  const [selectedValue, setSelectedValue] = useCachedState(() => value || '', [value]);
 
   return (
     <select
       className={styles.select}
+      data-testid='select'
       value={selectedValue}
       onChange={(event) => {
         setSelectedValue(event.target.value);
         onChange?.(event.target.value);
       }}
     >
-      <option value=''>{placeholder}</option>
+      <option value='' disabled>{placeholder}</option>
       {items.map((item) => (
-        <option value={item.value}>{item.label}</option>
+        <option key={item.value} value={item.value}>{item.label}</option>
       ))}
     </select>
   )

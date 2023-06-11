@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal /> should render the Modal 1`] = `
+<body>
+  <div>
+    <div
+      class="backdrop"
+      data-testid="backdrop"
+    />
+    <div
+      class="modal"
+      data-testid="modal"
+    >
+      Content
+    </div>
+  </div>
+</body>
+`;

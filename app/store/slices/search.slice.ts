@@ -2,12 +2,6 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../store';
 import { Photo } from './photos.slice';
 
-interface Album {
-  userId: number;
-  id: number;
-  title: string;
-}
-
 type searchState = {
   selectedAlbumId?: number;
   query?: string;

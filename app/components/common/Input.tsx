@@ -23,7 +23,8 @@ export function Input({
         styles.input,
         className
       )}
-      value={internalValue}
+      data-testid='input'
+      value={internalValue || ''}
       onChange={(event) => {
         setInternalValue(event.target.value);
         onChange?.(event.target.value);

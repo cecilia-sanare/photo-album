@@ -34,10 +34,13 @@ export function Modal({
           onClose?.();
         }}
       />
-      <div className={classNames(
-        styles.modal,
-        internallyOpened && styles.opened
-      )}>
+      <div
+        className={classNames(
+          styles.modal,
+          internallyOpened && styles.opened
+        )}
+        data-testid='modal'
+      >
         {children}
       </div>
     </>

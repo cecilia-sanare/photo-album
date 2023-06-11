@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> should render the input 1`] = `
+<body>
+  <div>
+    <input
+      class="input"
+      data-testid="input"
+      value=""
+    />
+  </div>
+</body>
+`;
