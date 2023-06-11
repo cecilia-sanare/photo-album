@@ -1,10 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import photosSlice from './photos.slice';
-import albumsSlice from './albums.slice';
-import searchSlice from './search.slice';
+import { photosReducer } from './photos.slice';
+import { albumsReducer } from './albums.slice';
+import { searchReducer } from './search.slice';
 
 export const reducers = combineReducers({
-  albums: albumsSlice,
-  photos: photosSlice,
-  search: searchSlice
+  albums: albumsReducer,
+  photos: photosReducer,
+  search: searchReducer
 });

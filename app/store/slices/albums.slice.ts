@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../store';
+import axios from 'axios';
 
-interface Album {
+export interface Album {
   userId: number;
   id: number;
   title: string;
@@ -14,9 +15,9 @@ const initialState = [] as AlbumsState;
 export const fetchAlbums = createAsyncThunk(
   'albums/fetchAlbums',
   async () => {
-    const response = await fetch('https://jsonplaceholder.typicode.com/albums');
+    const response = await axios.get('https://jsonplaceholder.typicode.com/albums');
 
-    return await response.json();
+    return response.data;
   }
 )
 
@@ -33,4 +34,4 @@ const albumsSlice = createSlice({
 
 export const selectAlbums = (state: RootState) => state.albums;
 
-export default albumsSlice.reducer
+export const albumsReducer = albumsSlice.reducer;

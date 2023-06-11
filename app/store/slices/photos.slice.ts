@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store';
+import axios from 'axios';
 
 export interface Photo {
   albumId: number;
@@ -17,9 +18,9 @@ const initialState = [] as PhotosState;
 export const fetchPhotosByAlbumId = createAsyncThunk(
   'photos/fetchByAlbumId',
   async (albumId: number) => {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`);
+    const response = await axios.get(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`);
 
-    return await response.json();
+    return response.data;
   }
 )
 
@@ -27,10 +28,7 @@ const photosSlice = createSlice({
   name: 'photos',
   initialState,
   reducers: {
-    setPhotos(state, action: PayloadAction<Photo[]>) {
-      return action.payload;
-    },
-    clearPhotos(state) {
+    clearPhotos() {
       return [];
     }
   },
@@ -43,5 +41,5 @@ const photosSlice = createSlice({
 
 export const selectPhotos = (state: RootState) => state.photos;
 
-export const { setPhotos, clearPhotos } = photosSlice.actions
-export default photosSlice.reducer
+export const { clearPhotos } = photosSlice.actions;
+export const photosReducer = photosSlice.reducer;

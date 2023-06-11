@@ -23,7 +23,7 @@ const jestConfig: JestConfigWithTsJest = {
   ],
 
   moduleNameMapper: {
-    '\\.(scss)$': '<rootDir>/__tests__/identity-obj-proxy-esm.js'
+    '\\.(scss)$': '<rootDir>/__tests__/identity-obj-proxy-esm.ts'
   }
 };
 

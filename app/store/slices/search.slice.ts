@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../store';
 import { Photo } from './photos.slice';
 
-type searchState = {
+export type searchState = {
   selectedAlbumId?: number;
   query?: string;
   selectedPhoto?: Photo;
@@ -42,4 +42,4 @@ export const selectSearchQuery = (state: RootState) => selectSearch(state).query
 export const selectSelectedAlbumId = (state: RootState) => selectSearch(state).selectedAlbumId;
 export const selectSelectedPhoto = (state: RootState) => selectSearch(state).selectedPhoto;
 
-export default searchSlice.reducer
+export const searchReducer = searchSlice.reducer;
