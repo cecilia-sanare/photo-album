@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+// No meaningful way of testing this file, hence why we're ignoring it in coverage.
 import { createRoot } from 'react-dom/client';
 import { App } from './components/App';
 import { Provider } from 'react-redux';

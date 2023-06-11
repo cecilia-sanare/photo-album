@@ -14,7 +14,7 @@ describe('<Select />', () => {
 
   describe('prop(value)', () => {
     it('should select the matching item', () => {
-      const expectedItem: SelectItem = {
+      const expectedItem: SelectItem<string> = {
         label: chance.string(),
         value: chance.string()
       };
@@ -27,7 +27,7 @@ describe('<Select />', () => {
   describe('prop(onChange)', () => {
     it('should support providing a callback', async () => {
       const onChange = jest.fn();
-      const expectedItem: SelectItem = {
+      const expectedItem: SelectItem<string> = {
         label: chance.word(),
         value: chance.word()
       };
@@ -42,7 +42,7 @@ describe('<Select />', () => {
     });
 
     it('should support not providing a callback', async () => {
-      const expectedItem: SelectItem = {
+      const expectedItem: SelectItem<string> = {
         label: chance.word(),
         value: chance.word()
       };

@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> should render the App 1`] = `
+<body>
+  <div>
+    <div
+      class="app"
+    >
+      <div
+        class="header"
+      >
+        <div
+          class="content"
+        >
+          <input
+            class="input search"
+            data-testid="input"
+            placeholder="Query the photo names~"
+            value=""
+          />
+          <select
+            class="select"
+            data-testid="select"
+          >
+            <option
+              disabled=""
+              value=""
+            >
+              Select an Album
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        class="backdrop"
+        data-testid="backdrop"
+      />
+      <div
+        class="modal"
+        data-testid="modal"
+      >
+        <div
+          class="header"
+        >
+          <div
+            class="close"
+            data-testid="modal-close"
+          >
+            x
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <img />
+        </div>
+      </div>
+      <div
+        class="photos"
+      />
+    </div>
+  </div>
+</body>
+`;

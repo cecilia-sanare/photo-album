@@ -1,25 +1,27 @@
 import * as styles from './Select.module.scss';
 import { useCachedState } from '../../hooks/use-cached-state';
 
-export type SelectItem = {
+type Primitive = string | number | boolean
+
+export type SelectItem<T extends Primitive> = {
   label: string;
-  value: string;
+  value: T;
 }
 
-type SelectProps = {
-  items: SelectItem[];
-  value?: string;
+type SelectProps<T extends Primitive> = {
+  items: SelectItem<T>[];
+  value?: T;
   placeholder?: string;
-  onChange?: (value: string) => void;
+  onChange?: (value: T) => void;
 }
 
-export function Select({
+export function Select<T extends Primitive>({
   items,
   value,
   placeholder,
   onChange
-}: SelectProps) {
-  const [selectedValue, setSelectedValue] = useCachedState(() => value || '', [value]);
+}: SelectProps<T>) {
+  const [selectedValue, setSelectedValue] = useCachedState<string>(() => value?.toString() ?? '', [value]);
 
   return (
     <select
@@ -27,13 +29,15 @@ export function Select({
       data-testid='select'
       value={selectedValue}
       onChange={(event) => {
-        setSelectedValue(event.target.value);
-        onChange?.(event.target.value);
+        const match = items.find((item) => item.value.toString() === event.target.value);
+
+        setSelectedValue(match.value.toString());
+        onChange?.(match.value);
       }}
     >
       <option value='' disabled>{placeholder}</option>
       {items.map((item) => (
-        <option key={item.value} value={item.value}>{item.label}</option>
+        <option key={item.value.toString()} value={item.value.toString()}>{item.label}</option>
       ))}
     </select>
   )

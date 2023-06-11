@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should render the Header 1`] = `
+<body>
+  <div>
+    <div
+      class="header"
+    >
+      <div
+        class="content"
+      >
+        <input
+          class="input search"
+          data-testid="input"
+          placeholder="Query the photo names~"
+          value=""
+        />
+        <select
+          class="select"
+          data-testid="select"
+        >
+          <option
+            disabled=""
+            value=""
+          >
+            Select an Album
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+</body>
+`;

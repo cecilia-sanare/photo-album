@@ -16,7 +16,7 @@ export function Header() {
   const items = useReadOnlyCachedState(() => {
     return albums.map((album) => ({
       label: album.title,
-      value: album.id.toString() // TODO: Fix this so it supports other types
+      value: album.id
     }));
   }, [albums]);
 
@@ -36,10 +36,8 @@ export function Header() {
         <Select
           items={items}
           placeholder='Select an Album'
-          value={selectedAlbumId?.toString()}
-          onChange={(albumId) => {
-            dispatch(setSelectedAlbumId(Number(albumId))); // TODO: Fix this once Select is adjusted
-          }}
+          value={selectedAlbumId}
+          onChange={(albumId) => dispatch(setSelectedAlbumId(albumId))}
         />
       </div>
     </div>
