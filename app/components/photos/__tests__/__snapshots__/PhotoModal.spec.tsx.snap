@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PhotoModal /> prop(photo) should support being undefined 1`] = `
+<body
+  class=""
+>
+  <div>
+    <div
+      class="backdrop"
+      data-testid="backdrop"
+    />
+    <div
+      class="modal"
+      data-testid="modal"
+    >
+      <div
+        class="header"
+      >
+        <div
+          class="close"
+          data-testid="modal-close"
+        >
+          x
+        </div>
+      </div>
+      <div
+        class="content"
+      >
+        <img />
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`<PhotoModal /> should render the PhotoModal 1`] = `
+<body
+  class="no-scroll"
+>
+  <div>
+    <div
+      class="backdrop opened"
+      data-testid="backdrop"
+    />
+    <div
+      class="modal opened"
+      data-testid="modal"
+    >
+      <div
+        class="header"
+      >
+        kigasvo
+        <div
+          class="close"
+          data-testid="modal-close"
+        >
+          x
+        </div>
+      </div>
+      <div
+        class="content"
+      >
+        <img
+          src="http://ololacin.vn/hab"
+        />
+      </div>
+    </div>
+  </div>
+</body>
+`;

@@ -1,25 +1,24 @@
 import { Photo } from '../../store/slices/photos.slice';
 import * as styles from './PhotoCard.module.scss';
-import { setSelectedPhoto } from '../../store/slices/search.slice';
-import { useAppDispatch } from '../../store/store';
 
 type PhotoCardProps = {
-    photo: Photo;
+  photo: Photo;
+  onClick?: () => void;
 }
 
 export function PhotoCard({
-    photo
+  photo,
+  onClick
 }: PhotoCardProps) {
-    const dispatch = useAppDispatch();
-
-    return (
-        <div 
-            className={styles.card}
-            onClick={() => dispatch(setSelectedPhoto(photo))}
-        >
-            <div className={styles.id}>{photo.id}</div>
-            <img className={styles.thumbnail} src={photo.thumbnailUrl} />
-            {photo.title}
-        </div>
-    )
+  return (
+    <div
+      className={styles.card}
+      data-testid='photo-card'
+      onClick={onClick}
+    >
+      <div className={styles.id}>{photo.id}</div>
+      <img className={styles.thumbnail} src={photo.thumbnailUrl} />
+      {photo.title}
+    </div>
+  )
 }

@@ -7,29 +7,29 @@ import { ModalHeader } from '../common/ModalHeader';
 import { ModalContent } from '../common/ModalContent';
 
 type PhotoModalProps = {
-    photo?: Photo;
+  photo?: Photo;
 }
 
 export function PhotoModal({
-    photo
+  photo
 }: PhotoModalProps) {
-    const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
-    const onClose = useCallback(() => {
-        dispatch(setSelectedPhoto(null));
-    }, [dispatch]);
+  const onClose = useCallback(() => {
+    dispatch(setSelectedPhoto(null));
+  }, [dispatch]);
 
-    return (
-        <Modal 
-            opened={Boolean(photo)}
-            onClose={onClose}
-        >
-            <ModalHeader onClose={onClose}>
-                {photo?.title}
-            </ModalHeader>
-            <ModalContent>
-                <img src={photo?.url} />
-            </ModalContent>
-        </Modal>
-    )
+  return (
+    <Modal
+      opened={Boolean(photo)}
+      onClose={onClose}
+    >
+      <ModalHeader onClose={onClose}>
+        {photo?.title}
+      </ModalHeader>
+      <ModalContent>
+        <img src={photo?.url} />
+      </ModalContent>
+    </Modal>
+  )
 }

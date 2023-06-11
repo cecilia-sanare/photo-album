@@ -4,7 +4,7 @@ import { Photo, clearPhotos, fetchPhotosByAlbumId, selectPhotos } from '../store
 import { useSelector } from 'react-redux';
 import * as styles from './App.module.scss';
 import { Header } from './Header';
-import { selectSearchQuery, selectSelectedAlbumId, selectSelectedPhoto } from '../store/slices/search.slice';
+import { selectSearchQuery, selectSelectedAlbumId, selectSelectedPhoto, setSelectedPhoto } from '../store/slices/search.slice';
 import { PhotoCard } from './photos/PhotoCard';
 import { PhotoModal } from './photos/PhotoModal';
 
@@ -38,7 +38,10 @@ export function App() {
       <PhotoModal photo={selectedPhoto} />
       <div className={styles.photos}>
         {filteredPhotos?.map((photo) => (
-          <PhotoCard photo={photo} />
+          <PhotoCard
+            photo={photo}
+            onClick={() => dispatch(setSelectedPhoto(photo))}
+          />
         ))}
       </div>
     </div>

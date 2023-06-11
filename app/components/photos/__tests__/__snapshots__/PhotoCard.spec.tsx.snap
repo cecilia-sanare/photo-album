@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select /> should render the Select 1`] = `
+<body>
+  <div>
+    <div
+      class="card"
+      data-testid="photo-card"
+    >
+      <div
+        class="id"
+      >
+        1034907539210240
+      </div>
+      <img
+        class="thumbnail"
+        src="http://eg.org/vomav"
+      />
+      fitak
+    </div>
+  </div>
+</body>
+`;
