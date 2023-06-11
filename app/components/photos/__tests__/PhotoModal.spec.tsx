@@ -23,9 +23,9 @@ describe('<PhotoModal />', () => {
     const photo: Photo = {
       albumId: chance.integer(),
       id: chance.integer(),
-      thumbnailUrl: chance.url(),
-      title: chance.word(),
-      url: chance.url()
+      thumbnailUrl: 'http://ololacin.vn/hab',
+      title: 'kigasvo',
+      url: 'http://ololacin.vn/hab'
     };
 
     const component = render(<PhotoModal photo={photo} />);
