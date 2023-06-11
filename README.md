@@ -7,7 +7,7 @@ An app for viewing albums provided by https://jsonplaceholder.typicode.com/album
 
 ### Prerequisites
 
-- [NodeJS 16+](https://nodejs.org/en)
+- [NodeJS 18+](https://nodejs.org/en)
 
 ### Quick Start
 

@@ -24,7 +24,7 @@ jobs:
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
           cache: 'npm'
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         name: Install Packages
@@ -38,7 +38,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
           cache: 'npm'
       - name: Cache Node Modules
         id: cache-npm
@@ -57,7 +57,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
           cache: 'npm'
       - name: Cache Node Modules
         id: cache-npm
