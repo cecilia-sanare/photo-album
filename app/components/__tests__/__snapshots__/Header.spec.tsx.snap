@@ -12,7 +12,7 @@ exports[`<Header /> should render the Header 1`] = `
         <input
           class="input search"
           data-testid="input"
-          placeholder="Query the photo names~"
+          placeholder="Search by the photo name!"
           value=""
         />
         <select

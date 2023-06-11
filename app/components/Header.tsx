@@ -29,7 +29,7 @@ export function Header() {
       <div className={styles.content}>
         <Input
           className={styles.search}
-          placeholder='Query the photo names~'
+          placeholder='Search by the photo name!'
           value={searchQuery}
           onChange={(query) => dispatch(setSearchQuery(query))}
         />

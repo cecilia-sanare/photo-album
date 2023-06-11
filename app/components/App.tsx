@@ -7,6 +7,7 @@ import { Header } from './Header';
 import { selectSearchQuery, selectSelectedAlbumId, selectSelectedPhoto, setSelectedPhoto } from '../store/slices/search.slice';
 import { PhotoCard } from './photos/PhotoCard';
 import { PhotoModal } from './photos/PhotoModal';
+import { useReadOnlyCachedState } from '../hooks/use-cached-state';
 
 export function App() {
   const dispatch = useAppDispatch();
@@ -14,7 +15,13 @@ export function App() {
   const selectedAlbumId = useSelector(selectSelectedAlbumId);
   const selectedPhoto = useSelector(selectSelectedPhoto);
   const photos = useSelector(selectPhotos);
-  const [filteredPhotos, setFilteredPhotos] = useState<Photo[]>();
+  const filteredPhotos = useReadOnlyCachedState(() => {
+    if (searchQuery) {
+      return photos.filter((photo) => photo.title.includes(searchQuery));
+    }
+
+    return photos;
+  }, [photos, searchQuery])
 
   useEffect(() => {
     if (selectedAlbumId) {
@@ -24,21 +31,14 @@ export function App() {
     }
   }, [selectedAlbumId]);
 
-  useEffect(() => {
-    if (searchQuery) {
-      setFilteredPhotos(photos.filter((photo) => photo.title.includes(searchQuery)));
-    } else {
-      setFilteredPhotos(photos);
-    }
-  }, [photos, searchQuery]);
-
   return (
     <div className={styles.app}>
       <Header />
       <PhotoModal photo={selectedPhoto} />
       <div className={styles.photos}>
-        {filteredPhotos?.map((photo) => (
+        {filteredPhotos.map((photo) => (
           <PhotoCard
+            key={photo.id}
             photo={photo}
             onClick={() => dispatch(setSelectedPhoto(photo))}
           />
