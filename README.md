@@ -3,10 +3,30 @@
 
 ## Photo Album
 
-An app for viewing albums from https://jsonplaceholder.typicode.com/albums.
+An app for viewing albums provided by https://jsonplaceholder.typicode.com/albums.
 
 ### Prerequisites
 
 - [NodeJS 16+](https://nodejs.org/en)
 
-### Getting Started
+### Quick Start
+
+```sh
+# Install the node modules
+$ npm ci
+# Start the server!
+$ npm start
+```
+
+### Running Tests
+
+```sh
+# This will execute the entire test suite w/o coverage
+$ npm test
+
+# This will execute the entire test suite w/ coverage
+$ npm run test:coverage
+
+# This will execute a specific test file w/o coverage
+$ npm test -- "<relative-path-to-file>"
+```
